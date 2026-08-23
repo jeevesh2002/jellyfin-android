@@ -27,10 +27,13 @@ kotlin {
 }
 
 android {
+    // Keep the upstream source namespace to avoid a disruptive package refactor.
+    // The installable SMS application identity is intentionally independent.
     namespace = "org.jellyfin.mobile"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
+        applicationId = "com.sparksystems.sms"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionName = project.getVersionName()
@@ -122,7 +125,7 @@ android {
     }
 }
 
-base.archivesName.set("jellyfin-android-v${project.getVersionName()}")
+base.archivesName.set("sms-android-v${project.getVersionName()}")
 
 dependencies {
     val proprietaryImplementation by configurations
